@@ -1,6 +1,6 @@
 package com.rps.rpsgame;
 import org.springframework.web.bind.annotation.*;
-import java.until.Random;
+import java.util.Random;
 
 @RestController
 @RequestMapping("/api")
