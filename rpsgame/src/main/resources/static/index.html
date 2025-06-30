@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Rock Paper Scissors</title>
+</head>
+<body>
+  <h1>Choose your move:</h1>
+  <button onclick="play('rock')">🪨 Rock</button>
+  <button onclick="play('paper')">📄 Paper</button>
+  <button onclick="play('scissors')">✂️ Scissors</button>
+
+  <h2 id="result"></h2>
+
+  <script>
+    function play(playerMove) {
+      fetch(`/api/play?playerMove=${playerMove}`, { method: 'POST' })
+        .then(res => res.json())
+        .then(data => {
+          document.getElementById("result").innerText =
+            `You chose ${data.playerMove}, computer chose ${data.computerMove} ➜ You ${data.result.toUpperCase()}!`;
+        });
+    }
+  </script>
+</body>
+</html>
