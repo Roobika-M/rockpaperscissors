@@ -3,20 +3,46 @@
 <head>
   <meta charset="UTF-8">
   <title>Rock Paper Scissors</title>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
   <style>
+    * {
+      box-sizing: border-box;
+      font-family: 'Press Start 2P', cursive;
+    }
+
+    body {
+      background: radial-gradient(circle, #111 40%, #000);
+      color: #0ff;
+      height: 100vh;
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    h1 {
+      font-size: 1.5rem;
+      color: #0ff;
+      margin-bottom: 20px;
+      text-shadow: 0 0 10px #0ff;
+    }
+
     .scoreboard {
       display: flex;
       gap: 40px;
-      font-size: 1.2rem;
-      margin-bottom: 20px;
+      margin: 20px 0;
+      font-size: 0.75rem;
+      color: #ff0;
+      text-shadow: 0 0 5px #ff0;
     }
 
     .hands {
       display: flex;
-      justify-content: center;
-      gap: 50px;
-      margin-bottom: 20px;
+      gap: 60px;
       font-size: 4rem;
+      margin: 20px 0;
     }
 
     .hand {
@@ -34,15 +60,52 @@
       75% { transform: rotate(20deg); }
       100% { transform: rotate(0deg); }
     }
+
+    .buttons {
+      margin: 20px 0;
+      display: flex;
+      gap: 20px;
+    }
+
+    button {
+      background: #000;
+      color: #0ff;
+      border: 2px solid #0ff;
+      padding: 10px 20px;
+      font-size: 0.75rem;
+      cursor: pointer;
+      border-radius: 6px;
+      text-shadow: 0 0 5px #0ff;
+      box-shadow: 0 0 10px #0ff;
+      transition: all 0.2s ease;
+    }
+
+    button:hover {
+      background-color: #0ff;
+      color: #000;
+      box-shadow: 0 0 20px #0ff, 0 0 40px #0ff;
+    }
+
+    #result {
+      font-size: 0.8rem;
+      margin-top: 20px;
+      padding: 15px 20px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 2px solid #0ff;
+      color: #0ff;
+      border-radius: 12px;
+      backdrop-filter: blur(4px);
+      text-shadow: 0 0 5px #0ff;
+    }
   </style>
 </head>
 <body>
-  <h1>Rock Paper Scissors</h1>
+  <h1>ROCK PAPER SCISSORS</h1>
 
   <div class="scoreboard">
-    <div>👤 You: <span id="playerScore">0</span></div>
-    <div>🤖 Computer: <span id="computerScore">0</span></div>
-    <div>➗ Draws: <span id="draws">0</span></div>
+    👤 You: <span id="playerScore">0</span> |
+    🤖 Computer: <span id="computerScore">0</span> |
+    🤝 Draws: <span id="draws">0</span>
   </div>
 
   <div class="hands">
@@ -51,9 +114,9 @@
   </div>
 
   <div class="buttons">
-    <button onclick="play('rock')">🪨 Rock</button>
-    <button onclick="play('paper')">📄 Paper</button>
-    <button onclick="play('scissors')">✂️ Scissors</button>
+    <button onclick="play('rock')">🪨 ROCK</button>
+    <button onclick="play('paper')">📄 PAPER</button>
+    <button onclick="play('scissors')">✂️ SCISSORS</button>
   </div>
 
   <div id="result">Make your move!</div>
@@ -70,7 +133,6 @@
           document.getElementById("result").innerText =
             `You chose ${data.playerMove}, computer chose ${data.computerMove} ➜ You ${data.result.toUpperCase()}!`;
 
-          // Update scores
           if (data.result === "win") {
             playerScore++;
             document.getElementById("playerScore").innerText = playerScore;
@@ -82,7 +144,6 @@
             document.getElementById("draws").innerText = draws;
           }
 
-          // Animate hands
           const handMap = {
             rock: "✊",
             paper: "✋",
